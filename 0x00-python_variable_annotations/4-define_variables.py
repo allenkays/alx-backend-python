@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+This module provides annotated variable
+declararions and initialization
+"""
 
 
 a: int = 1
