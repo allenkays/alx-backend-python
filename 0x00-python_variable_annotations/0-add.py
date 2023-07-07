@@ -12,9 +12,7 @@ def add(a: float, b: float) -> float:
         a: First floating point number
         b: Second floating point number
 
-    Returns: 
+    Returns:
         sum (float): returns the sum of two float args
     """
     return a + b
-
-if __name__ == '__main__':
