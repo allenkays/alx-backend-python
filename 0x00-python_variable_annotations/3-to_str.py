@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+This module provides a function that typecasts a float to a string
+"""
 
 
 def to_str(n: float) -> str:
