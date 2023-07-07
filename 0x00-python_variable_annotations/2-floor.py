@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-
+"""
+This module provides a function that floors a given float
+to int.
+"""
 import math
 
 
@@ -14,6 +17,7 @@ def floor(n: float) -> int:
         The floor value as an integer.
     """
     return math.floor(n)
+
 
 if __name__ == '__main__':
     ans = floor(3.14)
