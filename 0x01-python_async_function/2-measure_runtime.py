@@ -4,6 +4,7 @@
 This module provides a coroutine that measures runtime.
 """
 
+import asyncio
 import time
 from typing import Union
 
