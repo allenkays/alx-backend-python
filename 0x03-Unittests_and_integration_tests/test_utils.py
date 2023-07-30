@@ -4,9 +4,9 @@ Unit tests module
 """
 import unittest
 from parameterized import parameterized
-from unittest.mock import patch, Mock
+from unittest.mock import patch, MagicMock, Mock
 from utils import access_nested_map
-from utils import get_json
+from utils import get_json, memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -63,6 +63,38 @@ class TestGetJson(unittest.TestCase):
         # Assert that the mock get method is called once with the correct URL
         mock_get.assert_called_once_with(test_url)
         self.assertEqual(result, test_payload)
+
+
+class TestClass:
+
+
+    def a_method(self):
+        return 42
+
+    @memoize
+    def a_property(self):
+        return self.a_method()
+
+
+class TestMemoize(unittest.TestCase):
+    """Class uses unittest.mock.patch to mock a method."""
+    def test_memoize(self):
+        test_instance = TestClass()
+
+        # Patch a_method to avoid actual computation
+        with patch.object(test_instance, 'a_method') as mock_method:
+            mock_method.return_value = MagicMock(return_value=42)
+
+            #Call a_property twice
+            result1 = test_instance.a_property()
+            result2 = test_instance.a_property()
+
+            # Assert that a_method is only called once
+            mock_method.assert_called_once()
+
+            # Assert that the results of the two calls are the same
+            self.assertEqual(result1, 42)
+            self.assertEqual(result2, 42)
 
 
 if __name__ == "__main__":
