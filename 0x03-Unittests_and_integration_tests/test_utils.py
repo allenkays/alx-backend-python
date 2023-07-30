@@ -67,7 +67,6 @@ class TestGetJson(unittest.TestCase):
 
 class TestClass:
 
-
     def a_method(self):
         return 42
 
@@ -85,7 +84,7 @@ class TestMemoize(unittest.TestCase):
         with patch.object(test_instance, 'a_method') as mock_method:
             mock_method.return_value = MagicMock(return_value=42)
 
-            #Call a_property twice
+            # Call a_property twice
             result1 = test_instance.a_property()
             result2 = test_instance.a_property()
 
